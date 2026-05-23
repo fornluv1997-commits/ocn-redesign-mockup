@@ -224,15 +224,23 @@ p { margin: 0; }
   gap: 24px; padding: 16px 24px;
 }
 .logo {
-  display: flex; align-items: center; gap: 12px;
-  font-family: var(--serif);
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
+  line-height: 0;
 }
-.logo__mark { width: 40px; height: 40px; flex-shrink: 0; }
-.logo__text { display: flex; flex-direction: column; line-height: 1.1; }
-.logo__name { font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -.005em; }
-.logo__tag { font-family: var(--sans); font-size: 11px; color: var(--slate); margin-top: 3px; letter-spacing: .02em; }
-.logo__tag--light { color: rgba(255,255,255,.7); }
+.logo__img {
+  height: 56px;
+  width: auto;
+  display: block;
+}
+.logo__img--invert {
+  /* Knockout the navy logo for dark footer backgrounds */
+  filter: brightness(0) invert(1);
+  opacity: .92;
+  height: 64px;
+}
+.logo--footer { line-height: 1; }
 
 .nav { display: flex; gap: 26px; }
 .nav a {
@@ -297,12 +305,17 @@ p { margin: 0; }
 }
 .hero__copy { max-width: 600px; }
 .hero__title {
-  font-size: clamp(52px, 8vw, 104px);
-  line-height: .95;
+  font-size: clamp(44px, 6.5vw, 88px);
+  line-height: 1;
   font-weight: 700;
-  letter-spacing: -.03em;
+  letter-spacing: -.025em;
   margin: 6px 0 18px;
   color: var(--navy-deep);
+}
+.hero__title__line2 {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold);
 }
 .hero__tagline {
   font-family: var(--edit);
@@ -1163,9 +1176,16 @@ p { margin: 0; }
   padding-bottom: 50px;
 }
 .site-footer__brand { max-width: 360px; }
-.logo--footer .logo__name { color: #fff; }
+.site-footer__tagline {
+  margin: 16px 0 0;
+  font-family: var(--edit);
+  font-style: italic;
+  color: var(--gold-soft);
+  font-size: 16px;
+  letter-spacing: .01em;
+}
 .site-footer__about {
-  margin: 20px 0 24px;
+  margin: 16px 0 24px;
   font-size: 14px;
   line-height: 1.65;
   color: rgba(255,255,255,.6);
@@ -1274,6 +1294,7 @@ address a:hover { color: var(--gold-soft); }
   .nav { display: none; }
   .header-actions .btn--ghost { display: none; }
   .nav-toggle { display: inline-flex; }
+  .logo__img { height: 44px; }
 
   .hero__inner { grid-template-columns: 1fr; gap: 56px; }
   .hero__cover { order: -1; }
@@ -1334,7 +1355,7 @@ address a:hover { color: var(--gold-soft); }
 @media (max-width: 760px) {
   .nav {
     position: fixed;
-    inset: 64px 0 0 0;
+    inset: 76px 0 0 0;
     background: var(--paper);
     flex-direction: column;
     gap: 0;
